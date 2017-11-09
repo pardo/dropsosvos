@@ -19,6 +19,7 @@ from django.contrib import admin
 from uploader import views as uploader_views
 
 urlpatterns = [
+    url(r'^$', uploader_views.home),
     url(r'^admin/', admin.site.urls),
     url(r'^test/', uploader_views.test),
     url(r'^upload/$', uploader_views.upload_file),

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>dropsosvos</title>
+</head>
+<body>
+
+<div>Upload a file</div>
+<pre>
+  curl -F "file=@Pipfile" -F "name=name" -F "metadata=keep" localhost:5000/upload/
+</pre>
+
+<div>Download file data</div>
+<pre>
+  curl localhost:5000/upload/:id:/
+</pre>
+
+
+</body>
+</html>

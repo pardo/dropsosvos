@@ -40,3 +40,8 @@ def upload_view(request, upload_id):
         metadata=du.metadata,
         link=du.get_link()
     )), status=200)
+
+
+def home(request):
+    return render(request, "home.html", {
+    })
