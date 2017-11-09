@@ -20,5 +20,7 @@ from uploader import views as uploader_views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^upload/', uploader_views.test),
+    url(r'^test/', uploader_views.test),
+    url(r'^upload/$', uploader_views.upload_file),
+    url(r'^upload/(?P<upload_id>\d+)/$', uploader_views.upload_view),
 ]
