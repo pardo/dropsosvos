@@ -20,5 +20,7 @@ class DropboxUpload(models.Model):
         )
 
     def get_link(self):
-        dbx = dropbox.Dropbox(os.environ["DROPBOX_TOKEN"])
-        return dbx.files_get_temporary_link("/%s" % self.name).link
+        if "DROPBOX_TOKEN" in os.environ:
+            dbx = dropbox.Dropbox(os.environ["DROPBOX_TOKEN"])
+            return dbx.files_get_temporary_link("/%s" % self.name).link
+        return None

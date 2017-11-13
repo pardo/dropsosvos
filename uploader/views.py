@@ -28,7 +28,27 @@ def upload_file(request):
             metadata=du.metadata,
         )), status=201)
 
-    return HttpResponse("bad request", status=400)
+    if request.method == "GET" and "metadata" in request.GET:
+        data = []
+        for du in DropboxUpload.objects.filter(metadata=request.GET["metadata"]):
+            data.append(dict(
+                id=du.id,
+                name=du.name,
+                metadata=du.metadata,
+                link=du.get_link()
+            ))
+        return HttpResponse(json.dumps(data), status=400)
+
+    data = []
+    for du in DropboxUpload.objects.all():
+        data.append(dict(
+            id=du.id,
+            name=du.name,
+            metadata=du.metadata,
+        ))
+
+    return HttpResponse(json.dumps(data), status=400)
+
 
 
 def upload_view(request, upload_id):

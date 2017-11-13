@@ -9,5 +9,9 @@ look at the .env file for api keys needed to run
 ##Upload a file
 `curl -F "file=@Pipfile" -F "name=name" -F "metadata=keep" localhost:5000/upload/`
 
-##Download file
+##Download file data
 `curl localhost:5000/upload/:id:/`
+
+##Download filtering
+`curl localhost:5000/upload/?metadata=value`
+
